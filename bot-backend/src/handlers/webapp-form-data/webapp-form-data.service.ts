@@ -5,7 +5,8 @@ import { Context } from 'telegraf';
 export class WebappFormDataService {
   @On('web_app_data')
   async web_app_data(ctx: Context) {
-    const text = `You sent: ${JSON.stringify(ctx.webAppData)}`;
+    const webAppData = ctx.webAppData.data.json<object>();
+    const text = `You sent:\n${JSON.stringify(webAppData, null, 2)}`;
     await ctx.reply(text);
   }
 }
