@@ -11,6 +11,7 @@ export type I18nTranslations = {
         };
         "jobs": {
             "text": string;
+            "after-receive": string;
         };
     };
 };

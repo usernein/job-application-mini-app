@@ -6,6 +6,7 @@
     "text": "ℹ\uFE0F This bot will guide you to apply to one of our fictitious available jobs.\n\nIt provides a mini app with a web interface for a better experience for fulfilling the forms.\n\nYou may want to click on the button “Available jobs” or send /jobs to see the available jobs."
   },
   "jobs": {
-    "text": "\uD83D\uDCBC Here are the available jobs.\n\nClick on one of the buttons to open the form."
+    "text": "\uD83D\uDCBC Here are the available jobs.\n\nClick on one of the buttons to open the form.",
+    "after-receive": "✅ Your fake application has been falsely received!\n\nName: {name}\nEmail: {email}\nLocation: {location}\nAbout: {about}\n\nWe are not considering your application and you should not receive a response in a few days.\n\nThank you for applying!"
   }
 }

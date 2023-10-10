@@ -7,11 +7,11 @@ RUN cd miniapp-frontend && npm install
 COPY bot-backend/package*.json ./bot-backend/
 RUN cd bot-backend && npm install
 
-COPY miniapp-frontend/ ./miniapp-frontend/
-RUN cd miniapp-frontend && npm run build
-
 COPY bot-backend/ ./bot-backend/
 RUN cd bot-backend && npm run build
+
+COPY miniapp-frontend/ ./miniapp-frontend/
+RUN cd miniapp-frontend && npm run build
 
 EXPOSE 3000
 
