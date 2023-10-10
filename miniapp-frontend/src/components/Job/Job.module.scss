@@ -1,0 +1,44 @@
+.Root {
+  @apply flex flex-col gap-5;
+}
+
+.Title {
+  @apply text-2xl font-bold;
+}
+
+.Media {
+  @apply w-full px-5 h-64 overflow-hidden;
+}
+
+@mixin data-container {
+  .label {
+    @apply text-base font-semibold;
+  }
+
+  .content {
+    @apply text-sm;
+  }
+}
+
+.Description {
+  @include data-container;
+}
+
+.Responsibilities {
+  @include data-container;
+
+  .SingleResponsibility::before {
+    @apply mr-2;
+    content: '•';
+  }
+}
+
+.Requirements {
+  @include data-container;
+
+  .SingleRequirement::before {
+    @apply mr-2;
+    content: '•';
+  }
+}
+

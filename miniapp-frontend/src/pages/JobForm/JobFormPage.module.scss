@@ -1,0 +1,8 @@
+.JobFormPage {
+  @apply flex h-full w-full flex-col items-center justify-start;
+  @apply p-8;
+
+  .title {
+    @apply text-lg font-bold pb-2;
+  }
+}
