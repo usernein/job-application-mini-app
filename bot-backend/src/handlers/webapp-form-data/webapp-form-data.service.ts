@@ -9,6 +9,7 @@ export class WebappFormDataService {
 
   @On('web_app_data')
   async web_app_data(ctx: Context) {
+    const button_text = ctx.webAppData.button_text;
     const webAppData = ctx.webAppData.data.json<object>();
     const text = this.i18n.t('strings.jobs.after-receive', {
       args: {
@@ -16,6 +17,7 @@ export class WebappFormDataService {
         location: webAppData['location'],
         email: webAppData['email'],
         about: webAppData['about'],
+        job_name: button_text,
       },
     });
     await ctx.reply(text);

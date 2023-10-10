@@ -7,6 +7,6 @@
   },
   "jobs": {
     "text": "\uD83D\uDCBC Here are the available jobs.\n\nClick on one of the buttons to open the form.",
-    "after-receive": "✅ Your fake application has been falsely received!\n\nName: {name}\nEmail: {email}\nLocation: {location}\nAbout: {about}\n\nWe are not considering your application and you should not receive a response in a few days.\n\nThank you for applying!"
+    "after-receive": "✅ Your fake application for {job_name} has been falsely received!\n\nName: {name}\nEmail: {email}\nLocation: {location}\nAbout: {about}\n\nWe are not considering your application and you should not receive a response in a few days.\n\nThank you for applying!"
   }
 }

@@ -13,8 +13,8 @@ export type JobFormPageProps = {
   className?: string;
 };
 
-const onlyAlphanumericValidator = (value: string) => {
-  if (!value.match(/^\w*$/)) {
+const alphanumericWhitespaceValidator = (value: string) => {
+  if (!value.match(/^[\w\s]*$/)) {
     return "Only alphanumeric characters are allowed";
   }
   return null;
@@ -54,12 +54,12 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
           <TextInput
             inputRef={nameRef}
             label="First name"
-            validator={onlyAlphanumericValidator}
+            validator={alphanumericWhitespaceValidator}
           />
           <TextInput
             inputRef={lastNameRef}
             label="Last name"
-            validator={onlyAlphanumericValidator}
+            validator={alphanumericWhitespaceValidator}
           />
         </HorizontalStack>
         <EmailInput inputRef={emailRef} label="Email" />
