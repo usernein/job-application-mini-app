@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:18
+FROM node:hydrogen-slim
 WORKDIR /app
 
 COPY miniapp-frontend/package*.json ./miniapp-frontend/
@@ -17,4 +17,4 @@ EXPOSE 3000
 
 WORKDIR /app/bot-backend
 
-CMD sleep infinity
+CMD npm run start:prod
