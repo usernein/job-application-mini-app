@@ -17,6 +17,10 @@
   }
 }
 
+html, body {
+  @apply bg-background;
+}
+
 #root {
   @apply flex h-screen w-screen items-center justify-center bg-background text-text;
 }
