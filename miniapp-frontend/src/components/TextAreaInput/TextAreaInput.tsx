@@ -6,11 +6,11 @@ import { Textarea } from "@nextui-org/react";
 export type TextAreaInputProps = {
   className?: string;
   label: string;
-  ref?: React.Ref<HTMLInputElement>;
+  inputRef?: React.Ref<HTMLInputElement>;
 };
 export const TextAreaInput: React.FC<TextAreaInputProps> = ({
   className,
-  ref,
+  inputRef,
   label,
 }) => {
   return (
@@ -18,7 +18,7 @@ export const TextAreaInput: React.FC<TextAreaInputProps> = ({
       className={clsx(styles.TextAreaInput, className)}
       size={"sm"}
       variant={"bordered"}
-      ref={ref}
+      ref={inputRef}
       label={label}
     />
   );

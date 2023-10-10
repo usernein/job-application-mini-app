@@ -5,12 +5,12 @@ import { Input } from "@nextui-org/react";
 
 export type EmailInputProps = {
   className?: string;
-  ref?: React.Ref<HTMLInputElement>;
+  inputRef?: React.Ref<HTMLInputElement>;
   label: string;
 };
 export const EmailInput: React.FC<EmailInputProps> = ({
   className,
-  ref,
+  inputRef,
   label,
 }) => {
   const [isInvalid, setIsInvalid] = useState(false);
@@ -31,7 +31,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
       type="email"
       variant="bordered"
       size={"sm"}
-      ref={ref}
+      ref={inputRef}
       label={label}
       isInvalid={isInvalid}
       errorMessage={errorMessage}

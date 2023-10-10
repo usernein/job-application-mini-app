@@ -33,11 +33,11 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
   const aboutRef = useRef<HTMLInputElement>(null);
 
   const composeFormData = () => ({
-    name: nameRef.current?.value,
-    last_name: lastNameRef.current?.value,
-    email: emailRef.current?.value,
-    location: locationRef.current?.value,
-    about: aboutRef.current?.value,
+    name: nameRef.current?.value ?? "",
+    last_name: lastNameRef.current?.value ?? "",
+    email: emailRef.current?.value ?? "",
+    location: locationRef.current?.value ?? "",
+    about: aboutRef.current?.value ?? "",
   });
 
   const WebApp = useWebApp();
@@ -52,19 +52,19 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
         <h1 className={styles.title}>Applying for {job.title}</h1>
         <HorizontalStack className={"gap-2"}>
           <TextInput
-            ref={nameRef}
+            inputRef={nameRef}
             label="First name"
             validator={onlyAlphanumericValidator}
           />
           <TextInput
-            ref={lastNameRef}
+            inputRef={lastNameRef}
             label="Last name"
             validator={onlyAlphanumericValidator}
           />
         </HorizontalStack>
-        <EmailInput ref={emailRef} label="Email" />
-        <TextInput ref={locationRef} label="Location (City, Country)" />
-        <TextAreaInput ref={aboutRef} label="About you" />
+        <EmailInput inputRef={emailRef} label="Email" />
+        <TextInput inputRef={locationRef} label="Location (City, Country)" />
+        <TextAreaInput inputRef={aboutRef} label="About you" />
       </VerticalStack>
 
       <MainButton text={"Submit"} onClick={handleSubmit} />

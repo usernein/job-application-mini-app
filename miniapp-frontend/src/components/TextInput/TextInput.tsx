@@ -5,13 +5,13 @@ import { Input } from "@nextui-org/react";
 
 export type TextInputProps = {
   className?: string;
-  ref?: React.Ref<HTMLInputElement>;
+  inputRef: React.Ref<HTMLInputElement>;
   label: string;
   validator?: (value: string) => null | string;
 };
 export const TextInput: React.FC<TextInputProps> = ({
   className,
-  ref,
+  inputRef,
   label,
   validator,
 }) => {
@@ -36,7 +36,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       type="text"
       variant="bordered"
       size={"sm"}
-      ref={ref}
+      ref={inputRef}
       label={label}
       isInvalid={isInvalid}
       errorMessage={errorMessage}
