@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  bot:
+    build: .
+    ports:
+      - "48923:3000"
+    restart: unless-stopped

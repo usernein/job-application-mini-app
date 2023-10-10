@@ -1,0 +1,11 @@
+{
+  "start": {
+    "text": "\uD83D\uDCBC This bot will guide you to apply to one of our available jobs.\n\nSend /jobs to see the available jobs."
+  },
+  "help": {
+    "text": "ℹ\uFE0F This bot will guide you to apply to one of our fictitious available jobs.\n\nIt provides a mini app with a web interface for a better experience for fulfilling the forms.\n\nYou may want to click on the button “Available jobs” or send /jobs to see the available jobs."
+  },
+  "jobs": {
+    "text": "\uD83D\uDCBC Here are the available jobs.\n\nClick on one of the buttons to open the form."
+  }
+}
