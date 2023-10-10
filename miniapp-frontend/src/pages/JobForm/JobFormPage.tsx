@@ -43,7 +43,7 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
   const WebApp = useWebApp();
   const handleSubmit = () => {
     const formData = composeFormData();
-    WebApp.sendData(formData);
+    WebApp.sendData(JSON.stringify(formData));
   };
 
   return (
