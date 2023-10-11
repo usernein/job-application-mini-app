@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./JobFormPage.module.scss";
 import clsx from "clsx";
 import { TextInput } from "../../components/TextInput/TextInput.tsx";
@@ -32,12 +32,38 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
   const locationRef = useRef<HTMLInputElement>(null);
   const aboutRef = useRef<HTMLInputElement>(null);
 
+  const requiredInputs = [nameRef, lastNameRef, emailRef, locationRef];
+
+  const checkSubmittable = () => {
+    const isAnyRequiredInputEmpty = requiredInputs.some((ref) => {
+      if (!ref.current) return true;
+
+      const input = ref.current;
+      return !input?.value;
+    });
+
+    const isAnyRequiredInputInvalid = requiredInputs.some((ref) => {
+      if (!ref.current) return true;
+
+      const input = ref.current;
+      return input?.validationMessage;
+    });
+
+    return !isAnyRequiredInputEmpty && !isAnyRequiredInputInvalid;
+  };
+
+  const [isSubmittable, setIsSubmittable] = useState(false);
+
+  const checkSubmittableAndSetState = () => {
+    setIsSubmittable(checkSubmittable());
+  };
+
   const composeFormData = () => ({
     name: nameRef.current?.value ?? "",
     last_name: lastNameRef.current?.value ?? "",
     email: emailRef.current?.value ?? "",
     location: locationRef.current?.value ?? "",
-    about: aboutRef.current?.value ?? "",
+    about: aboutRef.current?.value ?? "---",
   });
 
   const WebApp = useWebApp();
@@ -55,19 +81,33 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
             inputRef={nameRef}
             label="First name"
             validator={alphanumericWhitespaceValidator}
+            onChange={checkSubmittableAndSetState}
           />
           <TextInput
             inputRef={lastNameRef}
             label="Last name"
             validator={alphanumericWhitespaceValidator}
+            onChange={checkSubmittableAndSetState}
           />
         </HorizontalStack>
-        <EmailInput inputRef={emailRef} label="Email" />
-        <TextInput inputRef={locationRef} label="Location (City, Country)" />
-        <TextAreaInput inputRef={aboutRef} label="About you" />
+        <EmailInput
+          inputRef={emailRef}
+          label="Email"
+          onChange={checkSubmittableAndSetState}
+        />
+        <TextInput
+          inputRef={locationRef}
+          label="Location (City, Country)"
+          onChange={checkSubmittableAndSetState}
+        />
+        <TextAreaInput
+          inputRef={aboutRef}
+          label="About you (optional)"
+          onChange={checkSubmittableAndSetState}
+        />
       </VerticalStack>
 
-      <MainButton text={"Submit"} onClick={handleSubmit} />
+      {isSubmittable && <MainButton text={"Submit"} onClick={handleSubmit} />}
     </div>
   );
 };

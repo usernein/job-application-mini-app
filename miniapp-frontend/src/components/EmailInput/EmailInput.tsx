@@ -7,11 +7,13 @@ export type EmailInputProps = {
   className?: string;
   inputRef?: React.Ref<HTMLInputElement>;
   label: string;
+  onChange?: (value: string) => void;
 };
 export const EmailInput: React.FC<EmailInputProps> = ({
   className,
   inputRef,
   label,
+  onChange,
 }) => {
   const [isInvalid, setIsInvalid] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>("");
@@ -26,6 +28,13 @@ export const EmailInput: React.FC<EmailInputProps> = ({
     setErrorMessage("Invalid email");
   };
 
+  const handleChange = (value: string) => {
+    validateAndSetError(value);
+    if (onChange) {
+      onChange(value);
+    }
+  };
+
   return (
     <Input
       type="email"
@@ -35,7 +44,7 @@ export const EmailInput: React.FC<EmailInputProps> = ({
       label={label}
       isInvalid={isInvalid}
       errorMessage={errorMessage}
-      onChange={(e) => validateAndSetError(e.target.value)}
+      onChange={(e) => handleChange(e.target.value)}
       className={clsx(styles.EmailInput, className)}
     />
   );

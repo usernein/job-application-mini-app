@@ -8,12 +8,14 @@ export type TextInputProps = {
   inputRef: React.Ref<HTMLInputElement>;
   label: string;
   validator?: (value: string) => null | string;
+  onChange?: (value: string) => void;
 };
 export const TextInput: React.FC<TextInputProps> = ({
   className,
   inputRef,
   label,
   validator,
+  onChange,
 }) => {
   const [isInvalid, setIsInvalid] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>("");
@@ -31,6 +33,13 @@ export const TextInput: React.FC<TextInputProps> = ({
     }
   };
 
+  const handleChange = (value: string) => {
+    validateAndSetError(value);
+    if (onChange) {
+      onChange(value);
+    }
+  };
+
   return (
     <Input
       type="text"
@@ -40,7 +49,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       label={label}
       isInvalid={isInvalid}
       errorMessage={errorMessage}
-      onChange={(e) => validateAndSetError(e.target.value)}
+      onChange={(e) => handleChange(e.target.value)}
       className={clsx(styles.TextInput, className)}
     />
   );
