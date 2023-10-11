@@ -8,6 +8,7 @@ import { EmailInput } from "../../components/EmailInput/EmailInput.tsx";
 import { TextAreaInput } from "../../components/TextAreaInput/TextAreaInput.tsx";
 import { useGetJob } from "../../hooks/useGetJob.ts";
 import { MainButton, useWebApp } from "@vkruglikov/react-telegram-web-app";
+import { TelegramBackButtonNavigator } from "../../components/TelegramBackButtonNavigator/TelegramBackButtonNavigator.tsx";
 
 export type JobFormPageProps = {
   className?: string;
@@ -108,6 +109,7 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
       </VerticalStack>
 
       {isSubmittable && <MainButton text={"Submit"} onClick={handleSubmit} />}
+      <TelegramBackButtonNavigator />
     </div>
   );
 };
