@@ -14,12 +14,22 @@ export type JobFormPageProps = {
   className?: string;
 };
 
-const alphanumericWhitespaceValidator = (value: string) => {
+const alphaNumericAndWhiteSpaceValidator = (value: string) => {
   if (!value.match(/^[\w\s]*$/)) {
     return "Only alphanumeric characters are allowed";
   }
   return null;
 };
+const notEmptyValidator = (value: string) => {
+  if (!value) {
+    return "This field is required";
+  }
+  return null;
+};
+const nameValidator = (value: string) => {
+  return notEmptyValidator(value) ?? alphaNumericAndWhiteSpaceValidator(value);
+};
+
 export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
   const job = useGetJob();
 
@@ -81,13 +91,13 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
           <TextInput
             inputRef={nameRef}
             label="First name"
-            validator={alphanumericWhitespaceValidator}
+            validator={nameValidator}
             onChange={checkSubmittableAndSetState}
           />
           <TextInput
             inputRef={lastNameRef}
             label="Last name"
-            validator={alphanumericWhitespaceValidator}
+            validator={nameValidator}
             onChange={checkSubmittableAndSetState}
           />
         </HorizontalStack>
@@ -99,6 +109,7 @@ export const JobFormPage: React.FC<JobFormPageProps> = ({ className }) => {
         <TextInput
           inputRef={locationRef}
           label="Location (City, Country)"
+          validator={notEmptyValidator}
           onChange={checkSubmittableAndSetState}
         />
         <TextAreaInput
