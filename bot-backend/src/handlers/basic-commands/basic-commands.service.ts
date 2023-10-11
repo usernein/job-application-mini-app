@@ -1,5 +1,5 @@
 import { Ctx, Help, Start, Update } from 'nestjs-telegraf';
-import { Context } from 'telegraf';
+import { Context, Markup } from 'telegraf';
 import { I18nService } from 'nestjs-i18n';
 import { I18nTranslations } from '../../generated/i18n.generated';
 
@@ -12,7 +12,8 @@ export class BasicCommandsService {
     const text = this.i18n.translate('strings.start.text', {
       lang: ctx.from.language_code,
     });
-    await ctx.reply(text);
+    const removeKeyboard = Markup.removeKeyboard().reply_markup;
+    await ctx.reply(text, { reply_markup: removeKeyboard });
   }
 
   @Help()
@@ -20,6 +21,7 @@ export class BasicCommandsService {
     const text = this.i18n.translate('strings.help.text', {
       lang: ctx.from.language_code,
     });
-    await ctx.reply(text);
+    const removeKeyboard = Markup.removeKeyboard().reply_markup;
+    await ctx.reply(text, { reply_markup: removeKeyboard });
   }
 }
