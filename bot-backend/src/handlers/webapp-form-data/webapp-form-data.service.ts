@@ -1,5 +1,5 @@
 import { On, Update } from 'nestjs-telegraf';
-import { Context } from 'telegraf';
+import { Context, Markup } from 'telegraf';
 import { I18nService } from 'nestjs-i18n';
 import { I18nTranslations } from '../../generated/i18n.generated';
 
@@ -20,6 +20,9 @@ export class WebappFormDataService {
         job_name: button_text,
       },
     });
-    await ctx.reply(text);
+
+    const removeKeyboard = Markup.removeKeyboard().reply_markup;
+
+    await ctx.reply(text, { reply_markup: removeKeyboard });
   }
 }
