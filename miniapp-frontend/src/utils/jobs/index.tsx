@@ -1,14 +1,14 @@
 import { JobInfo } from "./types";
 import astronautDog from "../../assets/lottie/astronaut_dog.json";
 import penguinJumping from "../../assets/lottie/penguin_jumping.json";
-import guyDebugging from "../../assets/lottie/guy_debugging.json";
+import personDebugging from "../../assets/lottie/person_debugging.json";
 import { LottieAutoAnimated } from "../../components/LottieAutoAnimated/LottieAutoAnimated.tsx";
 
 export const jobsInfo: JobInfo[] = [
   {
     id: "5182c897",
     title: "Algorithm Whisperer",
-    media: <LottieAutoAnimated animationData={guyDebugging} />,
+    media: <LottieAutoAnimated animationData={personDebugging} />,
     description:
       "Do you like helping computers when they're upset? We need someone to talk to them and make them feel better. No fancy degrees required, just a friendly personality and some patience.",
     responsibilities: [
